@@ -7,9 +7,9 @@ local LocalPlayer = Players.LocalPlayer
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "AlexHub | Animatronic Transform GUI",
+   Name = "Archived Hub | Animatronic Transform GUI",
    LoadingTitle = "Loading...",
-   LoadingSubtitle = "By Alex",
+   LoadingSubtitle = "By O49_R",
    Theme = "Default",
    ToggleUIKeybind = "K",
    ConfigurationSaving = {
