@@ -1,0 +1,134 @@
+-- Services
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- Rayfield
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "AlexHub | Animatronic Transform GUI",
+   LoadingTitle = "Loading...",
+   LoadingSubtitle = "By Alex",
+   Theme = "Default",
+   ToggleUIKeybind = "K",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "TransformGUI"
+   },
+   KeySystem = false,
+})
+
+-- Helper function to create animatronic morph buttons
+local function createAnimatronicTab(tabName, animatronics)
+   local tab = Window:CreateTab(tabName, 4483362458)
+   for _, anim in ipairs(animatronics) do
+      local name = anim.Name
+      tab:CreateButton({
+         Name = name,
+         Callback = function()
+            local args = {
+               [1] = anim.Parent.Parent.Name, -- e.g. FNAF1, FNAF2
+               [2] = anim.Parent.Name,        -- e.g. Animatronic
+               [3] = anim.Name                -- e.g. Freddy
+            }
+            ReplicatedStorage:WaitForChild("Connections"):WaitForChild("Morph"):WaitForChild("MorphSwap"):InvokeServer(unpack(args))
+         end
+      })
+   end
+end
+
+-- Character folders
+local Characters = ReplicatedStorage:WaitForChild("Characters")
+
+-- Tabs
+createAnimatronicTab("FNAF 1", {
+   Characters.FNAF1.Animatronic.BlackheartBonnie,
+   Characters.FNAF1.Animatronic.Bonnie,
+   Characters.FNAF1.Animatronic.Chica,
+   Characters.FNAF1.Animatronic.ChocolateFoxy,
+   Characters.FNAF1.Animatronic.Endo,
+   Characters.FNAF1.Animatronic.Foxy,
+   Characters.FNAF1.Animatronic.Freddy,
+   Characters.FNAF1.Animatronic.GoldenFreddy,
+   Characters.FNAF1.Animatronic.HardmodeBonnie,
+   Characters.FNAF1.Animatronic.HardmodeChica,
+   Characters.FNAF1.Animatronic.HardmodeFoxy,
+   Characters.FNAF1.Animatronic.HardmodeFreddy,
+   Characters.FNAF1.Animatronic.ITPBonnie,
+   Characters.FNAF1.Animatronic.LonelyFreddy,
+   Characters.FNAF1.Animatronic.SweetFlavorFreddy
+})
+
+createAnimatronicTab("FNAF 2", {
+   Characters.FNAF2.Animatronic.BB,
+   Characters.FNAF2.Animatronic.BBPlate,
+   Characters.FNAF2.Animatronic.BonniePlate,
+   Characters.FNAF2.Animatronic.CafeToyChica,
+   Characters.FNAF2.Animatronic.FreddyPlate,
+   Characters.FNAF2.Animatronic.JJ,
+   Characters.FNAF2.Animatronic.Mangle,
+   Characters.FNAF2.Animatronic.Puppet,
+   Characters.FNAF2.Animatronic.ShadowBonnie,
+   Characters.FNAF2.Animatronic.ShadowFreddy,
+   Characters.FNAF2.Animatronic.ToyBonnie,
+   Characters.FNAF2.Animatronic.ToyChica,
+   Characters.FNAF2.Animatronic.ToyFoxy,
+   Characters.FNAF2.Animatronic.ToyFreddy,
+   Characters.FNAF2.Animatronic.WitheredBonnie,
+   Characters.FNAF2.Animatronic.WitheredChica,
+   Characters.FNAF2.Animatronic.WitheredFoxy,
+   Characters.FNAF2.Animatronic.WitheredFreddy,
+   Characters.FNAF2.Animatronic.WitheredGoldenFreddy
+})
+
+createAnimatronicTab("FNAF 3", {
+   Characters.FNAF3.Animatronic.PhantomBonnie,
+   Characters.FNAF3.Animatronic.PhantomChica,
+   Characters.FNAF3.Animatronic.PhantomFoxy,
+   Characters.FNAF3.Animatronic.PhantomFreddy,
+   Characters.FNAF3.Animatronic.PhantomMangle,
+   Characters.FNAF3.Animatronic.PhantomPuppet,
+   Characters.FNAF3.Animatronic.Springtrap
+})
+
+createAnimatronicTab("FNAF 4", {
+   Characters.FNAF4.Animatronic.JackOChica
+})
+
+createAnimatronicTab("FNAF 9", {
+   Characters.FNAF9.Animatronic.BabyBot,
+   Characters.FNAF9.Animatronic.ChefBot,
+   Characters.FNAF9.Animatronic.ComedianBot,
+   Characters.FNAF9.Animatronic.FryBot,
+   Characters.FNAF9.Animatronic.GlamrockChica,
+   Characters.FNAF9.Animatronic.GlamrockFreddy,
+   Characters.FNAF9.Animatronic.GolfBot,
+   Characters.FNAF9.Animatronic.MagicianBot,
+   Characters.FNAF9.Animatronic.MontgomeryGator,
+   Characters.FNAF9.Animatronic.NannyBot,
+   Characters.FNAF9.Animatronic.RoxanneWolf,
+   Characters.FNAF9.Animatronic.ServerBot,
+   Characters.FNAF9.Animatronic.SewerBot,
+   Characters.FNAF9.Animatronic.ShatteredMonty,
+   Characters.FNAF9.Animatronic.ShatteredRoxy,
+   Characters.FNAF9.Animatronic.StaffBot,
+   Characters.FNAF9.Animatronic.Vanny,
+   Characters.FNAF9.Animatronic.WetFloorBot,
+   Characters.FNAF9.Animatronic.Burntrap,
+   Characters.FNAF9.Animatronic.GlamrockBonnie
+})
+
+createAnimatronicTab("TJOC", {
+   Characters.TJOC.Animatronic.IgnitedBonnie,
+   Characters.TJOC.Animatronic.IgnitedChica,
+   Characters.TJOC.Animatronic.IgnitedFoxy,
+   Characters.TJOC.Animatronic.IgnitedFreddy
+})
+
+createAnimatronicTab("Custom", {
+   Characters.Custom.Animatronic.Chair,
+   Characters.Custom.Animatronic.Sustrap,
+   Characters.Custom.Animatronic.Tangle
+})
